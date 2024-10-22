@@ -3,8 +3,9 @@
 prereqs: requirements.txt
 	pip install -r requirements.txt
 
-build: scripts/preprocess.cpp
-	g++ scripts/preprocess.cpp -o scripts/preprocess `pkg-config --cflags --libs opencv4`
+build: /app/scripts/preprocess.cpp /app/scripts/postprocess.cpp
+	g++ /app/scripts/preprocess.cpp -o /app/scripts/preprocess `pkg-config --cflags --libs opencv4`
+	g++ /app/scripts/postprocess.cpp -o /app/scripts/postprocess `pkg-config --cflags --libs Magick++`
 
 test: tests
 	python -m unittest -v

@@ -1,6 +1,4 @@
-matplotlib
 opencv-python
 pillow
-torch
 torchvision
 ultralytics

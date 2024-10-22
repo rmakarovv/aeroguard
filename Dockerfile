@@ -36,5 +36,4 @@ COPY requirements.txt /app/requirements.txt
 RUN mkdir /app/images
 RUN mkdir /app/save
 
-# Set the entry point
-# ENTRYPOINT ["make", "-f", "/app/scripts/Makefile", "preprocess"]
+# ENTRYPOINT ["make", "test_with_log"]

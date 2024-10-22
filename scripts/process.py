@@ -1,11 +1,7 @@
 import os
-import torch
 import yaml
 
 import numpy as np
-import torchvision as tv
-
-from matplotlib import pyplot as plt
 
 from ultralytics import YOLO
 from PIL import Image
@@ -29,7 +25,7 @@ def get_boxes(boxes_list):
 
 def main():
     
-    with open('config.yaml', 'rb') as f:
+    with open('/app/scripts/config.yaml', 'rb') as f:
         cfg = yaml.safe_load(f.read())
     
     detect = YOLO(cfg['detection'])

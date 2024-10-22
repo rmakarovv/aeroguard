@@ -21,7 +21,6 @@ int main(int argc, char* argv[]) {
             std::string img_path = entry.path().string();
             
             Magick::Image img(img_path);
-            img.resize(Magick::Geometry("20%"));
 
             images.push_back(img);
         }
