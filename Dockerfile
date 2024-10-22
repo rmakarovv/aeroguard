@@ -20,21 +20,21 @@ RUN apt-get update && apt-get install -y \
     libgtk-3-dev \
     libatlas-base-dev \
     gfortran \
-    libopencv-dev
+    libopencv-dev \
+    vim
 
 WORKDIR /app
+
 COPY scripts /app/scripts
 COPY images_raw /app/images_raw
+COPY input_data /app/input_data
+COPY tests /app/tests
+COPY weights /app/weight
+COPY Makefile /app/Makefile
+COPY requirements.txt /app/requirements.txt
 
 RUN mkdir /app/images
-
-# RUN g++ /app/scripts/preprocess.cpp -o /app/scripts/preprocess `pkg-config --cflags --libs opencv4`
-# RUN /app/scripts/preprocess /app/images_raw /app/images
-
-# RUN mkdir output
-
-# RUN g++ /app/scripts/postprocess.cpp -o /app/scripts/postprocess `pkg-config --cflags --libs Magick++`
-# RUN /app/scripts/postprocess /app/images /app/output/result.pdf
+RUN mkdir /app/save
 
 # Set the entry point
 # ENTRYPOINT ["make", "-f", "/app/scripts/Makefile", "preprocess"]
