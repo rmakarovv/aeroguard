@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y \
     python3 \
@@ -20,19 +20,23 @@ RUN apt-get update && apt-get install -y \
     libgtk-3-dev \
     libatlas-base-dev \
     gfortran \
-    libopencv-dev
+    libopencv-dev \
+    vim
 
 WORKDIR /app
 
-COPY scripts /app/scripts
-COPY images_raw /app/images_raw
-COPY input_data /app/input_data
-COPY tests /app/tests
-COPY weights /app/weight
-COPY Makefile /app/Makefile
-
 RUN mkdir /app/images
 RUN mkdir /app/save
+RUN mkdir /app/logs
+
+COPY Makefile /app/Makefile
+COPY requirements.txt /app/requirements.txt
+RUN make prereqs
+
+COPY scripts /app/scripts
+RUN make build
+
+COPY . /app/
 
 # Set the entry point
-# ENTRYPOINT ["make", "-f", "/app/scripts/Makefile", "preprocess"]
+ENTRYPOINT ["make", "test_with_log"]
