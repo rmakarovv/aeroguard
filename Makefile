@@ -3,8 +3,8 @@
 prereqs: requirements.txt
 	pip install -r requirements.txt
 
-build: scripts/preprocessing.cpp
-	gcc scripts/preprocessing.cpp -o preprocessing
+build: scripts/preprocess.cpp
+	g++ scripts/preprocess.cpp -o scripts/preprocess `pkg-config --cflags --libs opencv4`
 
 test: tests
 	python -m unittest -v
