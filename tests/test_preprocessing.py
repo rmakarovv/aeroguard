@@ -26,7 +26,7 @@ class TestPreprocessing(unittest.TestCase):
             img_raw = cv2.imread(os.path.join(self.input_path, fname), cv2.IMREAD_GRAYSCALE)
             img_out = cv2.imread(os.path.join(self.output_path, fname), cv2.IMREAD_GRAYSCALE)
             img_size = img_raw.shape[0] * img_raw.shape[1]
-            noise_ok = cv2.norm(img_raw, img_out) < 0.1 * img_size
+            noise_ok.append(cv2.norm(img_raw, img_out) < 0.1 * img_size)
         self.assertTrue(all(noise_ok), msg="Some of the images are not close enough to the input")
 
 if __name__ == '__main__':
