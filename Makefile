@@ -1,7 +1,7 @@
 .PHONY: prereqs build test test_with_log
 
 prereqs: requirements.txt
-	pip install -r requirements.txt
+	pip install -r requirements.txt --break-system-packages
 
 build: /app/scripts/preprocess.cpp /app/scripts/postprocess.cpp
 	g++ /app/scripts/preprocess.cpp -o /app/scripts/preprocess `pkg-config --cflags --libs opencv4`
