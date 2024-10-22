@@ -1,5 +1,5 @@
-detection: checkpoints/best.pt
-classification: runs/detect/train18/weights/best.pt
+detection: weights/detector_wgts.pt
+classification: weights/classifier_wgts.pt
 
 data: input_data
 savepath: save
