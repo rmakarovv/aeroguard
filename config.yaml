@@ -1,4 +1,5 @@
 detection: checkpoints/best.pt
 classification: runs/detect/train18/weights/best.pt
 
-data: aircraft-skin-defects-new-dataset-3/valid/images/
+data: input_data
+savepath: save
