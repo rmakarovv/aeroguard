@@ -1,7 +1,7 @@
-IMAGES_RAW_DIR=images_raw
-IMAGES_DIR=images
-OUTPUT_DIR=save
-PDF_FILE=output/processed_images.pdf
+IMAGES_RAW_DIR=/app/images_raw
+IMAGES_DIR=/app/images
+OUTPUT_DIR=/app/save
+PDF_FILE=/app/output/processed_images.pdf
 
 all: preprocess process postprocess
 

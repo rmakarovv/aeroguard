@@ -1,5 +1,6 @@
 import os
 import yaml
+import argparse
 
 import numpy as np
 
@@ -24,13 +25,20 @@ def get_boxes(boxes_list):
 
 
 def main():
-    
     with open('/app/scripts/config.yaml', 'rb') as f:
         cfg = yaml.safe_load(f.read())
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-s', '--savepath', type=str, default=cfg['savepath'], dest='savepath')
+    parser.add_argument('-d', '--data', type=str, default=cfg['data'], dest='data')
+    parser.add_argument('-cw', '--classification', type=str, default=cfg['classification'], dest='classification')
+    parser.add_argument('-dw', '--detection', type=str, default=cfg['detection'], dest='detection')
+
+    args = parser.parse_args()
     
-    detect = YOLO(cfg['detection'])
-    clf = YOLO(cfg['classification'])
-    path = cfg['data'] + '/'
+    detect = YOLO(args.detection)
+    clf = YOLO(args.classification)
+    path = args.data + '/'
 
     pic_name = np.random.choice(os.listdir(path)) # the picture is chosen randomly
 
@@ -50,15 +58,18 @@ def main():
 
         boxes.append([y_min.item(), x_min.item(), height.item(), width.item()])
     
+    if args.savepath:
+        np.save(args.savepath + '/boxes.npy', np.array(boxes))
+    
     for i, box in enumerate(boxes):
         cropped = tf.functional.crop(Image.open(img_path), *box)
         classified = clf.predict(cropped, save=False, save_txt=False)
         
         img_array = classified[0].plot()
 
-        if cfg['savepath']:
+        if args.savepath:
             img_to_save = Image.fromarray(img_array)
-            img_to_save.save(cfg['savepath'] + '/' + f'{i}_{pic_name}')
+            img_to_save.save(args.savepath + '/' + f'{i}_{pic_name}')
 
 if __name__ == '__main__':
     main()
