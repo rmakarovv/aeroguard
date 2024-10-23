@@ -63,7 +63,7 @@ def main():
 
             boxes.append([y_min.item(), x_min.item(), height.item(), width.item()])
         
-        if args.savepath:
+        if args.savepath and len(boxes) > 0:
             np.save(args.savepath + '_bboxes/' + pic_name.split('.')[0] + '.npy', np.array(boxes))
         
         for i, box in enumerate(boxes):
