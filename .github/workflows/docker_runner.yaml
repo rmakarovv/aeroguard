@@ -4,8 +4,11 @@ on:
 jobs:
     build:
         name: Check if docker runs successfully
-        runs-on: ubuntu:24.04
+        runs-on: ubuntu-latest
         steps:
+            -
+                name: checkout
+                uses: actions/checkout@v4
             -
                 name: docker build
                 run: |
@@ -18,4 +21,4 @@ jobs:
             -
                 name: docker run
                 run: |
-                    docker run -it --rm -v ./output:/app/output -v ./logs:/app/logs defect_detection_image
+                    docker run -v ./output:/app/output -v ./logs:/app/logs defect_detection_image
