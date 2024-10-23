@@ -1,4 +1,5 @@
 import os
+import shutil
 import unittest
 
 import cv2
@@ -11,9 +12,10 @@ def includes_all_from_first(list1, list2):
 
 class TestPreprocessing(unittest.TestCase):
     def setUp(self):
-        self.input_path = "/app/images_raw"
-        self.output_path = "/app/images"
-        os.system("/app/scripts/preprocess /app/images_raw /app/images")
+        self.input_path = "/app/tests/images_raw"
+        self.output_path = "/app/tests/images_tmp"
+        os.mkdir(self.output_path)
+        os.system("/app/scripts/preprocess /app/tests/images_raw /app/tests/images_tmp")
         self.files_raw = os.listdir(self.input_path)
         self.files_out = os.listdir(self.output_path)
     
@@ -28,6 +30,9 @@ class TestPreprocessing(unittest.TestCase):
             img_size = img_raw.shape[0] * img_raw.shape[1]
             noise_ok.append(cv2.norm(img_raw, img_out) < 0.1 * img_size)
         self.assertTrue(all(noise_ok), msg="Some of the images are not close enough to the input")
+
+    def tearDown(self):
+        shutil.rmtree(self.output_path)
 
 if __name__ == '__main__':
     log_file = '/app/logs/log_preprocessing_test.txt'
