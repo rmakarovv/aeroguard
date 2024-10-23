@@ -38,4 +38,4 @@ RUN make build
 
 COPY . /app/
 
-# ENTRYPOINT ["make", "test_with_log"]
+ENTRYPOINT ["make", "test_with_log"]

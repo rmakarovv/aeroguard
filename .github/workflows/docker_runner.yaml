@@ -1,0 +1,21 @@
+name: Docker image builder and runner
+on:
+    push
+jobs:
+    build:
+        name: Check if docker runs successfully
+        runs-on: ubuntu:24.04
+        steps:
+            -
+                name: docker build
+                run: |
+                    docker build -t defect_detection_image .
+            -
+                name: create dirs
+                run: |
+                    mkdir output
+                    mkdir logs
+            -
+                name: docker run
+                run: |
+                    docker run -it --rm -v ./output:/app/output -v ./logs:/app/logs defect_detection_image
