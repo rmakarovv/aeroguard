@@ -1,0 +1,1 @@
+docker build -t defect_detection_image .
