@@ -38,4 +38,7 @@ RUN make build
 
 COPY . /app/
 
-ENTRYPOINT ["make", "test_with_log"]
+ENTRYPOINT ["make", "-f", "scripts/Makefile", "all"]
+
+# comment the previous entrypoint and uncomment the following line if you want to run unit tests
+# ENTRYPOINT ["make", "test_with_log"]
