@@ -38,5 +38,4 @@ RUN make build
 
 COPY . /app/
 
-# Set the entry point
 ENTRYPOINT ["make", "test_with_log"]

@@ -1,7 +1,7 @@
-IMAGES_RAW_DIR=images_raw
-IMAGES_DIR=images
-OUTPUT_DIR=output
-PDF_FILE=processed_images.pdf
+IMAGES_RAW_DIR=/app/images_raw
+IMAGES_DIR=/app/images
+OUTPUT_DIR=/app/save
+PDF_FILE=/app/output/processed_images.pdf
 
 all: preprocess process postprocess
 
@@ -11,7 +11,7 @@ preprocess:
 
 process:
 	echo "Running NN processing..."
-	python3 process.py $(IMAGES_DIR) $(OUTPUT_DIR)
+	python3 /app/scripts/process.py
 
 postprocess:
 	echo "Generating PDF from processed images..."

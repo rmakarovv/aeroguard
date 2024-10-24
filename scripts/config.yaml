@@ -1,5 +1,5 @@
-detection: ../weights/detector_wgts.pt
-classification: ../weights/classifier_wgts.pt
+detection: /app/weights/detector_wgts.pt
+classification: /app/weights/classifier_wgts.pt
 
-data: ../input_data
-savepath: ../save
+data: /app/images
+savepath: /app/save

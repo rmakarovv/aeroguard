@@ -1,0 +1,24 @@
+name: Docker image builder and runner
+on:
+    push
+jobs:
+    build:
+        name: Check if docker runs successfully
+        runs-on: ubuntu-latest
+        steps:
+            -
+                name: checkout
+                uses: actions/checkout@v4
+            -
+                name: docker build
+                run: |
+                    docker build -t defect_detection_image .
+            -
+                name: create dirs
+                run: |
+                    mkdir output
+                    mkdir logs
+            -
+                name: docker run
+                run: |
+                    docker run -v ./output:/app/output -v ./logs:/app/logs defect_detection_image

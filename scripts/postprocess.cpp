@@ -21,12 +21,10 @@ int main(int argc, char* argv[]) {
             std::string img_path = entry.path().string();
             
             Magick::Image img(img_path);
-            img.resize(Magick::Geometry("20%"));
 
             images.push_back(img);
         }
 
-        // Save all resized images into a single PDF
         Magick::writeImages(images.begin(), images.end(), output_pdf);
         std::cout << "PDF created successfully with resized images: " << output_pdf << std::endl;
     } catch (std::exception& e) {
