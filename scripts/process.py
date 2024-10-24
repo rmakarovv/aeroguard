@@ -57,6 +57,11 @@ def main():
         boxes = get_boxes(box_list)
         
         if args.savepath and len(boxes) > 0:
+
+            save_path = args.savepath + '_bboxes/'
+            if not os.path.exists(save_path):
+                os.makedirs(save_path)
+
             np.save(args.savepath + '_bboxes/' + pic_name.split('.')[0] + '.npy', np.array(boxes))
         
         for i, box in enumerate(boxes):
