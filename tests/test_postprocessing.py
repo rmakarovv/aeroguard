@@ -1,6 +1,10 @@
+import os
 import unittest
 
 class TestPostprocessing(unittest.TestCase):
+    def setUp(self):
+        os.system("/app/scripts/preprocess /app/images_raw /app/images")
+    
     def test_postprocessing(self):
         self.assertEqual(1, 1)
 

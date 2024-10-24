@@ -10,7 +10,7 @@ build: /app/scripts/preprocess.cpp /app/scripts/postprocess.cpp
 test: tests
 	python3 -m unittest -v
 
-test_with_log: tests/test_preprocessing.py tests/test_processing.py tests/test_postprocessing.py
-	python3 tests/test_preprocessing.py
-	python3 tests/test_processing.py
-	python3 tests/test_postprocessing.py
+test_with_log: /app/tests/test_preprocessing.py /app/tests/test_processing.py /app/tests/test_postprocessing.py
+	python3 /app/tests/test_preprocessing.py
+	python3 /app/tests/test_processing.py
+	python3 /app/tests/test_postprocessing.py

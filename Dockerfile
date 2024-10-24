@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y \
     python3 \
@@ -38,4 +38,5 @@ RUN make build
 
 COPY . /app/
 
+# Set the entry point
 ENTRYPOINT ["make", "test_with_log"]
