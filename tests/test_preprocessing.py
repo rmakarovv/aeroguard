@@ -23,7 +23,7 @@ class TestPreprocessing(unittest.TestCase):
         self.input_path = "/app/tests/images_raw"
         self.output_path = "/app/tests/images_tmp"
         os.mkdir(self.output_path)
-        os.system("/app/scripts/preprocess /app/tests/images_raw /app/tests/images_tmp")
+        os.system(f"/app/scripts/preprocess {self.input_path} {self.output_path}")
         self.files_raw = os.listdir(self.input_path)
         self.files_out = os.listdir(self.output_path)
     

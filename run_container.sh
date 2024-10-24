@@ -11,3 +11,5 @@ docker run -it --rm --name defect_detection_container \
     -v ./save:/app/save \
     -v ./output:/app/output \
     defect_detection_image
+
+# docker run -it -v C:/Users/r.makarov/OneDrive/Skoltech/SE/aeroguard/output:/app/output -v C:/Users/r.makarov/OneDrive/Skoltech/SE/aeroguard/logs:/app/logs -v C:/Users/r.makarov/OneDrive/Skoltech/SE/aeroguard/save:/app/save -v C:/Users/r.makarov/OneDrive/Skoltech/SE/aeroguard/images:/app/images defect_detection_image

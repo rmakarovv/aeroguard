@@ -25,7 +25,6 @@ int main(int argc, char* argv[]) {
             images.push_back(img);
         }
 
-        // Save all resized images into a single PDF
         Magick::writeImages(images.begin(), images.end(), output_pdf);
         std::cout << "PDF created successfully with resized images: " << output_pdf << std::endl;
     } catch (std::exception& e) {
