@@ -10,6 +10,14 @@ def includes_all_from_first(list1, list2):
             return False
     return True
 
+import cv2
+
+def includes_all_from_first(list1, list2):
+    for el in list1:
+        if el not in list2:
+            return False
+    return True
+
 class TestPreprocessing(unittest.TestCase):
     def setUp(self):
         self.input_path = "/app/tests/images_raw"
@@ -35,6 +43,7 @@ class TestPreprocessing(unittest.TestCase):
         shutil.rmtree(self.output_path)
 
 if __name__ == '__main__':
+    log_file = '/app/logs/log_preprocessing_test.txt'
     log_file = '/app/logs/log_preprocessing_test.txt'
     with open(log_file, "w") as f:
         runner = unittest.TextTestRunner(f, verbosity=2)

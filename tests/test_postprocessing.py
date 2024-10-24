@@ -1,5 +1,5 @@
-import os
 import shutil
+import os
 import unittest
 
 class TestPostprocessing(unittest.TestCase):
