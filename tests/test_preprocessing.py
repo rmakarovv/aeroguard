@@ -44,7 +44,6 @@ class TestPreprocessing(unittest.TestCase):
 
 if __name__ == '__main__':
     log_file = '/app/logs/log_preprocessing_test.txt'
-    log_file = '/app/logs/log_preprocessing_test.txt'
     with open(log_file, "w") as f:
         runner = unittest.TextTestRunner(f, verbosity=2)
         unittest.main(testRunner=runner)
