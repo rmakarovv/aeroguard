@@ -52,16 +52,9 @@ def main():
         img_path = path + pic_name
         detected = detect.predict(source=img_path, save=False, save_txt=False)
 
-        box = detected[0].boxes.xyxy.int()
+        box_list = detected[0].boxes.xyxy.int()
 
-        boxes = []
-        for i, row in enumerate(box):
-            x_min, y_min, x_max, y_max = row
-
-            width = x_max - x_min
-            height = y_max - y_min
-
-            boxes.append([y_min.item(), x_min.item(), height.item(), width.item()])
+        boxes = get_boxes(box_list)
         
         if args.savepath and len(boxes) > 0:
             np.save(args.savepath + '_bboxes/' + pic_name.split('.')[0] + '.npy', np.array(boxes))

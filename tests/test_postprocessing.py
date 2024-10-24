@@ -1,5 +1,5 @@
-import os
 import shutil
+import os
 import unittest
 
 class TestPostprocessing(unittest.TestCase):
@@ -7,7 +7,7 @@ class TestPostprocessing(unittest.TestCase):
         self.input_dir = "/app/tests/images_out"
         self.output_dir = "/app/tests/output_tmp"
         os.mkdir(self.output_dir)
-        os.system("/app/scripts/postprocess /app/tests/images_out /app/tests/output_tmp/result.pdf")
+        os.system(f"/app/scripts/postprocess {self.input_dir} {self.output_dir}/result.pdf")
     
     def test_report_is_generated(self):
         self.assertTrue(os.path.exists(os.path.join(self.output_dir, "result.pdf")))
