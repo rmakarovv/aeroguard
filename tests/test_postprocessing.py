@@ -4,7 +4,7 @@ import unittest
 
 class TestPostprocessing(unittest.TestCase):
     def setUp(self):
-        self.input_dir = "/app/save"
+        self.input_dir = "/app/tests/images_out"
         self.output_dir = "/app/tests/output_tmp"
         os.mkdir(self.output_dir)
         os.system(f"/app/scripts/postprocess {self.input_dir} {self.output_dir}/result.pdf")

@@ -4,10 +4,10 @@ import unittest
 
 class TestProcessing(unittest.TestCase):
     def setUp(self):
-        self.input_dir = "/app/images"
+        self.input_dir = "/app/tests/images"
         self.output_dir = "/app/tests/images_out_tmp"
         os.mkdir(self.output_dir)
-        os.system("python3 /app/scripts/process.py -d {} -s {} -sb".format(self.input_dir, self.output_dir))
+        os.system(f"python3 /app/scripts/process.py -d {self.input_dir} -s {self.output_dir} -sb")
     
     def test_bounding_boxes_detected(self):
         self.assertTrue(len(os.listdir(self.output_dir + "_bboxes")) > 0)
