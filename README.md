@@ -44,6 +44,15 @@ PDF_FILE=/app/output/processed_images.pdf
 
 ## How to run
 
+To clone the repository, run:
+
+```
+git clone https://github.com/rmakarovv/aeroguard.git
+cd aeroguard
+```
+
+Then, run the following commands in the `aeroguard` folder.
+
 ### Locally
 
 ```
