@@ -12,10 +12,10 @@ def includes_all_from_first(list1, list2):
 
 class TestPreprocessing(unittest.TestCase):
     def setUp(self):
-        self.input_path = "/app/tests/images_raw"
-        self.output_path = "/app/tests/images_tmp"
+        self.input_path = "./tests/images_raw"
+        self.output_path = "./tests/images_tmp"
         os.mkdir(self.output_path)
-        os.system(f"/app/scripts/preprocess {self.input_path} {self.output_path}")
+        os.system(f"./scripts/preprocess {self.input_path} {self.output_path}")
         self.files_raw = os.listdir(self.input_path)
         self.files_out = os.listdir(self.output_path)
     
@@ -35,7 +35,7 @@ class TestPreprocessing(unittest.TestCase):
         shutil.rmtree(self.output_path)
 
 if __name__ == '__main__':
-    log_file = '/app/logs/log_preprocessing_test.txt'
+    log_file = './logs/log_preprocessing_test.txt'
     with open(log_file, "w") as f:
         runner = unittest.TextTestRunner(f, verbosity=2)
         unittest.main(testRunner=runner)

@@ -81,4 +81,4 @@ Comment the first line with the `ENTRYPOINT` in the [Dockerfile](Dockerfile), an
 
 ## Example outputs:
 
-To discover the result of the run, look into [example_output/processed_images.pdf](https://github.com/rmakarovv/aeroguard/blob/234472e833221c74a9b13dd13430bf9be1a67b14/example_output/processed_images.pdf)
+To discover the result of the run, look into [example_output/processed_images.pdf](https://github.com/rmakarovv/aeroguard/blob/fc0a7f927445b1d1376d35882bdb3a04953c3fb5/example_output/processed_images.pdf)

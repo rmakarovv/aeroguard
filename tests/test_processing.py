@@ -4,10 +4,10 @@ import unittest
 
 class TestProcessing(unittest.TestCase):
     def setUp(self):
-        self.input_dir = "/app/tests/images"
-        self.output_dir = "/app/tests/images_out_tmp"
+        self.input_dir = "./tests/images"
+        self.output_dir = "./tests/images_out_tmp"
         os.mkdir(self.output_dir)
-        os.system(f"python3 /app/scripts/process.py -d {self.input_dir} -s {self.output_dir} -sb")
+        os.system(f"python3 ./scripts/process.py -d {self.input_dir} -s {self.output_dir} -sb")
     
     def test_bounding_boxes_detected(self):
         self.assertTrue(len(os.listdir(self.output_dir + "_bboxes")) > 0)
@@ -19,7 +19,7 @@ class TestProcessing(unittest.TestCase):
         shutil.rmtree(self.output_dir)
 
 if __name__ == '__main__':
-    log_file = '/app/logs/log_processing_test.txt'
+    log_file = './logs/log_processing_test.txt'
     with open(log_file, "w") as f:
         runner = unittest.TextTestRunner(f, verbosity=2)
         unittest.main(testRunner=runner)

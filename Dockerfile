@@ -1,27 +1,6 @@
 FROM ubuntu:24.04
 
-RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
-    imagemagick \
-    libmagick++-dev \
-    build-essential \
-    libpoppler-cpp-dev \
-    pkg-config \
-    libjpeg-dev \
-    libtiff-dev \
-    libpng-dev \
-    libavcodec-dev \
-    libavformat-dev \
-    libswscale-dev \
-    libv4l-dev \
-    libxvidcore-dev \
-    libx264-dev \
-    libgtk-3-dev \
-    libatlas-base-dev \
-    gfortran \
-    libopencv-dev \
-    vim
+RUN apt-get update && apt-get install -y build-essential
 
 WORKDIR /app
 
@@ -39,8 +18,7 @@ RUN make build
 COPY . /app/
 
 RUN make test_with_log
-
 ENTRYPOINT ["make", "-f", "scripts/Makefile", "all"]
 
-# comment the previous entrypoint and uncomment the following line if you want to just run unit tests
+# comment the previous entrypoint and RUN command and uncomment the following line if you want to just run unit tests
 # ENTRYPOINT ["make", "test_with_log"]
