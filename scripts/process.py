@@ -125,7 +125,7 @@ def main():
         os.makedirs(args.savepath + "_bboxes/", exist_ok=True)
 
     # List all image files in the specified data directory
-    pic_names = os.listdir(path)
+    pic_names = [oic for pic in os.listdir(path) if not pic.startswith('.')]
     for pic_name in pic_names:
         print(f"\n --- Processing {pic_name} ---")
 
