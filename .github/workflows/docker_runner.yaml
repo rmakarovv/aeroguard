@@ -16,7 +16,7 @@ jobs:
             -
                 name: create dirs
                 run: |
-                    mkdir output
+                    mkdir -p output
                     mkdir logs
             -
                 name: docker run

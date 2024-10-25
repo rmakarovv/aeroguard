@@ -109,8 +109,8 @@ def main():
     )
 
     # Flag for saving detected bounding boxes as NumPy files
-    parser.add_argument("-sb", "--save_bboxes", action="store_true", dest="save_bboxes")
-    parser.set_defaults(save_bboxes=False)
+    parser.add_argument("-sb", "--save_bboxes", default=False, action="store_true", dest="save_bboxes")
+    # parser.set_defaults(save_bboxes=False)
 
     # Argument parsing
     args = parser.parse_args()
@@ -125,7 +125,7 @@ def main():
         os.makedirs(args.savepath + "_bboxes/", exist_ok=True)
 
     # List all image files in the specified data directory
-    pic_names = [oic for pic in os.listdir(path) if not pic.startswith('.')]
+    pic_names = [pic for pic in os.listdir(path) if not pic.startswith('.')]
     for pic_name in pic_names:
         print(f"\n --- Processing {pic_name} ---")
 
@@ -142,7 +142,7 @@ def main():
         boxes = get_boxes(box_tens)
 
         # Save bounding boxes to a specified directory if required
-        if args.savepath and len(boxes) > 0:
+        if args.savepath and args.save_bboxes and len(boxes) > 0:
             np.save(
                 args.savepath + "_bboxes/" + pic_name.split(".")[0] + ".npy",
                 np.array(boxes),
