@@ -80,7 +80,7 @@ def main():
         -sb, --save_bboxes: Flag to save detected bounding boxes.
     """
 
-    with open("/app/scripts/config.yaml", "rb") as config_file:
+    with open(os.path.join(os.getcwd(), "scripts/config.yaml"), "rb") as config_file:
         cfg = yaml.safe_load(config_file.read())
 
     # Set up argument parsing for command-line options

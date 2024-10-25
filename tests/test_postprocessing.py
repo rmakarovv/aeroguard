@@ -4,10 +4,11 @@ import unittest
 
 class TestPostprocessing(unittest.TestCase):
     def setUp(self):
-        self.input_dir = "./tests/images_out"
-        self.output_dir = "./tests/output_tmp"
+        self.cwd = os.getcwd()
+        self.input_dir = os.path.join(self.cwd, "tests/images_out")
+        self.output_dir = os.path.join(self.cwd, "tests/output_tmp")
         os.mkdir(self.output_dir)
-        os.system(f"./scripts/postprocess {self.input_dir} {self.output_dir}/result.pdf")
+        os.system(f"{os.path.join(self.cwd, 'scripts/postprocess')} {self.input_dir} {self.output_dir}/result.pdf")
     
     def test_report_is_generated(self):
         self.assertTrue(os.path.exists(os.path.join(self.output_dir, "result.pdf")))
@@ -19,7 +20,7 @@ class TestPostprocessing(unittest.TestCase):
         shutil.rmtree(self.output_dir)
 
 if __name__ == '__main__':
-    log_file = './logs/log_postprocessing_test.txt'
+    log_file = os.path.join(os.getcwd(), 'logs/log_postprocessing_test.txt')
     with open(log_file, "w") as f:
         runner = unittest.TextTestRunner(f, verbosity=2)
         unittest.main(testRunner=runner)
