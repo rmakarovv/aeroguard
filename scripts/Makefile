@@ -18,4 +18,4 @@ postprocess:
 	/app/scripts/postprocess $(OUTPUT_DIR) $(PDF_FILE)
 
 clean:
-	rm -rf $(IMAGES_DIR)/* $(OUTPUT_DIR)/* $(PDF_FILE)
+	rm -rf $(IMAGES_DIR)/* $(OUTPUT_DIR)/*
